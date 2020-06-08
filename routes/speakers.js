@@ -3,11 +3,11 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = () => {
-  router.get('/speakers', (req, res) => {
+  router.get('/', (req, res) => {
     return res.send('Speakers list');
   });
 
-  router.get('/speakers/:shortname', (req, res) => {
+  router.get('/:shortname', (req, res) => {
       return res.send(`Detail page of speaker ${req.params.shortname}`);
   });
 
