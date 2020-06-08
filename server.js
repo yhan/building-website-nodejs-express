@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const router = require('./routes'); // default to index.js
+const routers = require('./routes/index'); // default to index.js
 
 const app = express();
 
@@ -11,11 +11,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'static')));
 
-app.use("/", router());
-
-app.get('/speakers', (req, res) => {
-  res.sendfile(path.join(__dirname, 'static', 'speakers.html'));
-});
+app.use('/', routers());
 
 app.listen(port, () => {
   console.log(`Listen on port ${port}`);
