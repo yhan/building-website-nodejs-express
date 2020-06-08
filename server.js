@@ -18,10 +18,10 @@ app.use(express.static(path.join(__dirname, 'static')));
 
 app.use(
   '/',
-  routers({
+  routers(
     speakerService,
     feedbackService,
-  })
+  )
 );
 
 app.listen(port, () => {
