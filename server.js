@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const router = require('./routes'); // default to index.js
 
 const app = express();
 
@@ -10,10 +11,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'static')));
 
-app.get('/', (req, res) => {
-//   res.sendfile(path.join(__dirname, 'static', 'index.html'));
-    res.render('pages/index', {pageTitle: "Hello world"});
-});
+app.use("/", router());
 
 app.get('/speakers', (req, res) => {
   res.sendfile(path.join(__dirname, 'static', 'speakers.html'));
